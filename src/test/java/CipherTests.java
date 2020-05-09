@@ -1,5 +1,7 @@
 import edu.wpi.cs3733.entity.CaesarCipher;
 import edu.wpi.cs3733.entity.ElbonianCipher;
+import edu.wpi.cs3733.entity.Message;
+import org.junit.Assert;
 import org.junit.Test;
 
 import static junit.framework.TestCase.assertEquals;
@@ -60,6 +62,12 @@ public class CipherTests {
     }
 
     @Test
+    public void CaesarTest9() {
+        CaesarCipher caesarCipher = new CaesarCipher();
+        assertEquals(caesarCipher.caesarCipherConversion(""), "");
+    }
+
+    @Test
     public void ElbonianTest1() {
         ElbonianCipher elbonianCipher = new ElbonianCipher();
         assertEquals(elbonianCipher.elbonianCipherConversion("This is 1 message!"), "20080919S0919SaS13051919010705!");
@@ -109,4 +117,9 @@ public class CipherTests {
         assertEquals(elbonianCipher.elbonianCipherConversion("asdl$%!#oh2n@13ln!fs^mwmm"), "");
     }
 
+    @Test
+    public void ElbonianTest9() {
+        ElbonianCipher elbonianCipher = new ElbonianCipher();
+        assertEquals(elbonianCipher.elbonianCipherConversion(""), "");
+    }
 }
