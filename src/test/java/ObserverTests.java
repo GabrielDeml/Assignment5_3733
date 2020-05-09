@@ -16,10 +16,10 @@ public class ObserverTests {
         ElbonianCipher elbonianCipher = new ElbonianCipher();
         cleartext.register(caesarCipher);
         cleartext.register(elbonianCipher);
-        cleartext.setText("gnitset");
+        cleartext.setText("zzzZZz");
         String caesarBefore = caesarCipher.getText();
         String elbonianBefore = elbonianCipher.getText();
-        cleartext.setText("testing");
+        cleartext.setText("aaaAAa");
         Assert.assertNotEquals(caesarBefore, caesarCipher.getText());
         Assert.assertNotEquals(elbonianBefore, elbonianCipher.getText());
     }
