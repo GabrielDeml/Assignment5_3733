@@ -1,14 +1,19 @@
 package edu.wpi.cs3733;
 
 import edu.wpi.cs3733.entity.*;
+import edu.wpi.cs3733.entity.Number;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+
+import java.net.URL;
+import java.util.ResourceBundle;
 
 /**
  * Cipher application controller; don't modify this file (except for note below)
  */
-public class CipherController {
+public class CipherController implements Initializable {
 
 	@FXML
 	TextField textInputBox;
@@ -22,6 +27,7 @@ public class CipherController {
 	private Message cleartext;
 	private CaesarCipher caesarCipher;
 	private ElbonianCipher elbonianCipher;
+	private Number number;
 
 	public CipherController(){
 		cleartext = new Message();
@@ -41,7 +47,7 @@ public class CipherController {
 	 */
 	@FXML
 	public void onTextUpdate(){
-		cleartext.setText(textInputBox.getText());
+        number.setState(textInputBox.getText());
 	}
 
 	/**
@@ -49,7 +55,15 @@ public class CipherController {
 	 */
 	@FXML
 	public void updateOutput(){
-		caesarTextOut.setText(caesarCipher.getText());
-		elbonianTextOut.setText(elbonianCipher.getText());
+
 	}
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        number = new Number();
+
+        number.addListener(new CaesarCipherObserver(caesarTextOut));
+        number.addListener(new ElbonianCipherObserver(elbonianTextOut));
+    }
+
 }
